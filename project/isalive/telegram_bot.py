@@ -27,7 +27,7 @@ class telegram_bot:
 
     def send_notification(self):
         # print(f'here is ids {self.chat_ids}')
-        with open('chat_ids.csv') as file:
+        with open('./chat_ids.csv') as file:
             for chatid in file.readlines():
                 self.bot.send_message(chat_id=int(chatid), text=self.notification_text)
 
