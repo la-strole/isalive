@@ -4,6 +4,8 @@ Bot name is @isalivenotification_bot.
 """
 import telebot
 
+import telegram_image
+
 
 class telegram_bot:
 
@@ -12,13 +14,16 @@ class telegram_bot:
         self.notification_text = 'Помер!'
 
     def get_chat_ids(self):
-
         @self.bot.message_handler(commands=["start", ])
         def send_welcome(message):
             self.bot.reply_to(message, "Как только - так сразу!")
 
             with open('chat_ids.csv', 'a') as file:
                 file.write(str(message.chat.id))
+
+        @self.bot.message_handler(func=lambda m: True)
+        def send_cartoon(message):
+            self.bot.send_message(message.chat.id, telegram_image.get_random_cartoon_url())
 
         self.bot.infinity_polling()
 
@@ -35,4 +40,3 @@ class telegram_bot:
 if __name__ == "__main__":
     new_bot = telegram_bot()
     new_bot.get_chat_ids()
-
