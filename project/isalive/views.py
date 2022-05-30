@@ -3,7 +3,7 @@ import re
 from django.shortcuts import render
 import wikipedia
 
-import telegram_bot
+from . import telegram_bot
 
 
 # Create your views here.
