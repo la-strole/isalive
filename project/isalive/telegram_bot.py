@@ -18,7 +18,7 @@ class telegram_bot:
             self.bot.reply_to(message, "Как только - так сразу!")
 
             with open('chat_ids.csv', 'a') as file:
-                file.write(message.chat.id)
+                file.write(str(message.chat.id))
 
         self.bot.infinity_polling()
 
@@ -29,7 +29,7 @@ class telegram_bot:
         # print(f'here is ids {self.chat_ids}')
         with open('chat_ids.csv') as file:
             for chatid in file.readlines():
-                self.bot.send_message(chat_id=chatid, text=self.notification_text)
+                self.bot.send_message(chat_id=int(chatid), text=self.notification_text)
 
 
 if __name__ == "__main__":
