@@ -1,14 +1,16 @@
+import re
+
 from django.shortcuts import render
 import wikipedia
-import re
-from django.http import HttpResponse
+
+import telegram_bot
 
 
 # Create your views here.
 def is_alive(request):
-    """
-    Only one question - is he alive?
+    """ Only one question - is he still alive?
     :return: Yes or No
+
     """
 
     # Get info from wikipedia
@@ -22,6 +24,10 @@ def is_alive(request):
                 text = 'yes'
             else:
                 text = 'no'
+                new_bot = telegram_bot.telegram_bot()
+                new_bot.stop_bot()
+                new_bot.send_notification()
+
         else:
             text = 'Error'
     else:
