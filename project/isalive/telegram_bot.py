@@ -4,14 +4,14 @@ Bot name is @isalivenotification_bot.
 """
 import telebot
 
-import telegram_image
+from . import telegram_image
 
 
 class telegram_bot:
 
     def __init__(self):
         self.bot = telebot.TeleBot("5346758240:AAFofsIDkIClcdRued7-AfqMflAUog2Yr-Q")
-        self.notification_text = 'Помер!'
+        self.notification_text = 'ПОМЕР!!!'
 
     def get_chat_ids(self):
         @self.bot.message_handler(commands=["start", ])
